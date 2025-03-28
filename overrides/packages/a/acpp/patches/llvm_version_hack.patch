@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ac85810..e6bfa44 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -387,6 +387,7 @@ if(BUILD_CLANG_PLUGIN)
+     endif()
+   endif()
+ 
++  set(LLVM_VERSION_MAJOR ${LLVM_VERSION_SHIM})
+   if(${LLVM_VERSION_MAJOR} LESS 14)
+     if(${WITH_ACCELERATED_CPU} OR ${WITH_SSCP_COMPILER} OR ${WITH_STDPAR_COMPILER})
+       message(WARNING "clang version too old (${LLVM_VERSION_MAJOR} < 14) to be used with advanced AdaptiveCpp compiler features, disabling WITH_STDPAR_COMPILER, WITH_ACCELERATED_CPU, WITH_SSCP_COMPILER")

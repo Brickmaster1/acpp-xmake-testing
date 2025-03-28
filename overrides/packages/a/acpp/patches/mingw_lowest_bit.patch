@@ -1,0 +1,13 @@
+diff --git a/include/hipSYCL/compiler/cbs/MathUtils.hpp b/include/hipSYCL/compiler/cbs/MathUtils.hpp
+index 0b4e86f..2ac5ad8 100644
+--- a/include/hipSYCL/compiler/cbs/MathUtils.hpp
++++ b/include/hipSYCL/compiler/cbs/MathUtils.hpp
+@@ -79,7 +79,7 @@ template <> inline int lowest_bit(unsigned int n) {
+ 
+ #else
+   // default to POSIX
+-  return ffs(n) - 1;
++  return __builtin_ffs(n) - 1;
+ #endif
+ }
+ 
