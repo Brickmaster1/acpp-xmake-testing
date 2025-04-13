@@ -1,5 +1,4 @@
 package("llvm")
-    set_kind("toolchain")
     set_homepage("https://llvm.org/")
     set_description("The LLVM Compiler Infrastructure")
     add_configs("shared",            {description = "Build shared library.", default = false, type = "boolean"})
@@ -99,7 +98,8 @@ package("llvm")
     on_load(function (package)
         package:add("deps", "cmake")
         package:add("deps", "python 3.x", {kind = "binary", host = true})
-        package:add("deps", "zlib", "libffi", {system = false})
+        package:add("deps","zlib-ng", {configs = {zlib_compat = true}})
+        package:add("deps", "libffi", {system = false})
         if package:is_plat("linux") then
             package:add("deps", "binutils", {host = true}) -- needed for gold and strip
         end
@@ -126,7 +126,7 @@ package("llvm")
     --     os.cp("*", package:installdir())
     -- end)
 
-    on_install("windows", "msys", "linux", "macosx|x86_64", "bsd", function (package)
+    on_install(function (package)
         local projects = {
             "bolt",
             "clang",

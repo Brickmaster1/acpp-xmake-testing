@@ -7,7 +7,7 @@ package("acpp")
 
     add_deps("zlib-ng", {configs = {zlib_compat = true}})
 
-    add_deps("llvm", {system = false, configs = {shared = true}})
+    add_deps("llvm", {system = false, configs = {clang = false, shared = true}})
     add_deps("openmp", "spirv-headers", "spirv-tools", "cmake")
 
     add_patches("latest", "patches/llvm_spirv_cmake.patch", "f6135dc338bb924625999850311930fa7ffb30e2767cd09f205a3f632b8f644d")
